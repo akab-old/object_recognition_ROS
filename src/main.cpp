@@ -15,15 +15,19 @@
 ros::Publisher pub;
 
 void 
-cloud_cb (const sensor_msgs::PointCloud2ConstPtr& cloud_msg)
+cloud_cb (const sensor_msgs::PointCloud2ConstPtr& input)
 {
-  // // Container for original & filtered data
-  // pcl::PCLPointCloud2* cloud = new pcl::PCLPointCloud2; 
-  // pcl::PCLPointCloud2ConstPtr cloudPtr(cloud);
-  // pcl::PCLPointCloud2 result;
+  // Container for original & filtered data
+  pcl::PCLPointCloud2* cloud = new pcl::PCLPointCloud2; 
+  pcl::PCLPointCloud2ConstPtr cloudPtr(cloud);
+  pcl::PCLPointCloud2 result;
 
-  // // Convert to PCL data type
-  // pcl_conversions::toPCL(*cloud_msg, *cloud);
+  // Convert to PCL data type
+  pcl_conversions::toPCL(*input, *cloud);
+
+  // // Convert the sensor_msgs/PointCloud2 data to pcl/PointCloud
+  // pcl::PointCloud<pcl::PointXYZ> cloud;
+  // pcl::fromROSMsg (*input, cloud);
 
   //Create the recognition algorithm
   Recognition rec(cloudPtr);
