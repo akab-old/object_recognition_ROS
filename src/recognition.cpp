@@ -159,7 +159,8 @@ public:
 
 	Recognition(vector<ObjectModel> objects, string db_name){
 		detected_objects = objects;
-		ObjectDB reference_db = ObjectDB(db_name,objects);
+		ObjectDB reference_db;
+		reference_db.loadDB(db_name);
 	}
 
 	void buildIndex(){
@@ -182,7 +183,7 @@ public:
 	}
 
 	void printRecognitionResults(){
-		
+
 	}
 
 };
