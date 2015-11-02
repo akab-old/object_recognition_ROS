@@ -371,8 +371,8 @@ public:
         Table::Collection detectedTables = detectTables();
         Object::Collection detectedObjects = detectObjects(detectedTables);
 
-        detectedTables = detectedTables;
-        detectedObjects = detectedObjects;
+        // detectedTables = detectedTables;
+        // detectedObjects = detectedObjects;
 
 
         return detectedObjects;

@@ -179,6 +179,10 @@ public:
 	void nearestKSearch (flann::Index<flann::ChiSquareDistance<float> > &index, const vfh_model &model, 
                 			int k, flann::Matrix<int> &indices, flann::Matrix<float> &distances){
 
-}
+	}
+
+	void printRecognitionResults(){
+		
+	}
 
 };

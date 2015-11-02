@@ -43,7 +43,7 @@ cloud_cb (const sensor_msgs::PointCloud2ConstPtr& input)
   //Create the detection algorithm
   Detection det(cloud.makeShared());
 
-  //Detects the objects
+  //Detects the objects and run Recognition
   {
 
     boost::mutex::scoped_lock(db_mutex);
