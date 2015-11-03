@@ -49,6 +49,7 @@ cloud_cb (const sensor_msgs::PointCloud2ConstPtr& input)
     boost::mutex::scoped_lock(db_mutex);
 
     Object::Collection objects = det.run();
+
     vector<ObjectModel> models;
     for(vector<Object::Ptr>::iterator obj = objects->begin(); obj != objects->end(); ++obj){
       ObjectModel model(*obj);
@@ -56,7 +57,8 @@ cloud_cb (const sensor_msgs::PointCloud2ConstPtr& input)
     }
 
     Recognition rec(models,"reference_objects");
-    
+
+    rec.run();
   }
 
   // Convert to ROS data type
@@ -123,7 +125,7 @@ int main (int argc, char** argv){
 
   //Create the DB of trained ObjectModels (CAD)
   loadModels("/home/valerio/catkin_ws/src/obj_recognition/model");
-
+  exit(0);
 
   // Create a ROS publisher for the output point cloud
   pub = nh.advertise<sensor_msgs::PointCloud2> ("output", 1);
